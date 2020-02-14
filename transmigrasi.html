@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokasi Transmigrasi Aceh</title>
+  <style type='text/css'>
+  #peta {
+  width: 70%;
+  height: 500px;
+
+} </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <script type="text/javascript">
+    
+	(function() {
+  window.onload = function() {
+var map;
+    //Parameter Google maps
+    var options = {
+      zoom: 8, //level zoom
+	  //posisi tengah peta
+      center: new google.maps.LatLng(4.76257, 96.76757),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+	
+	 // Buat peta di 
+    var map = new google.maps.Map(document.getElementById('peta'), options);
+	 // Tambahkan Marker 
+     var locations = [
+               		    ['Data cut', 5.28201, 95.64842],
+                   		['Leugah', 5.56557, 95.71945],
+                   		['Jaboi', 5.80511, 95.32593],
+                   		['Lampoh Lada', 5.37699, 95.94972],
+                      	['Gunong Meunasah', 4.77254, 95.56697],
+                      	['Geumpang', 5.0104, 95.92162],
+                      	['Krueng Meusagop', 5.15762, 96.43436],
+                     	['Cot Kruet', 5.18544, 96.87128],
+                     	['Alue Kumuneng', 4.40421, 96.01499],
+                      	['Gunong Pulo', 4.387, 95.92776],
+                      	['Wih Ilang', 4.46493, 96.69054],
+                      	['Banta Tok Jong', 4.24177, 96.47462],
+                      	['Punti Payong', 4.79981, 97.78785],
+                      	['Peunaron', 4.62453, 97.63311],
+                      	['Cane Baru', 4.144, 97.21675],
+                      	['Aceh Tamiang', 4.23288, 98.00288],
+                      	['Gajah Mati', 3.31651, 97.99198],
+                      	['Suak Jampak', 2.78692, 97.79057],
+                      	['Trumon', 2.63444, 97.74167],
+                      	['Bukit Alim', 2.57682, 97.91298],
+                      	['Sigulai', 2.75333, 95.90927],
+                      	['Latiung, 2.36137, 96.45567', 2.36137, 96.45567], 		
+    
+    ];
+	  var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+     /* kode untuk menampilkan banyak marker */
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+		 icon: 'grad-icon.png'
+      });
+     /* menambahkan event clik untuk menampikan
+     	 infowindows dengan isi sesuai denga
+	    marker yang di klik */
+		
+      google.maps.event.addDomListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  
+
+  };
+})();
+
+	</script>
+  </head>
+  <body>
+    <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 col-lg-offset-2">
+
+                    <h1>Lokasi Transmigrasi</h1>
+
+                    <p class="lead">Peta Sebaran Lokasi Permukiman Transmigrasi di Provinsi Aceh</p>
+
+                    <p></p>
+
+                    
+                </div><!-- /.8 -->
+
+            </div> <!-- /.row-->
+
+        </div> <!-- /.container-->
+    <center><div id="peta"></div></center>
+  </body>
+</html>
